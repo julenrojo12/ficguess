@@ -1,0 +1,53 @@
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  height: 50px;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-align: center;
+  animation: flip 0.5s ease-in-out backwards;
+}
+
+.value {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Result colors */
+.correct {
+  background-color: var(--color-correct);
+  color: white;
+}
+
+.partial {
+  background-color: var(--color-partial);
+  color: #1a1a1a;
+}
+
+.incorrect {
+  background-color: var(--color-incorrect);
+  color: white;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0);
+    background-color: var(--bg-tertiary);
+  }
+  50% {
+    transform: rotateX(90deg);
+    background-color: var(--bg-tertiary);
+  }
+  51% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0);
+  }
+}

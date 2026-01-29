@@ -1,0 +1,64 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+/* Sizes */
+.sm {
+  padding: 2px var(--spacing-sm);
+  font-size: 0.75rem;
+}
+
+.md {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.875rem;
+}
+
+/* Variants */
+.default {
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+}
+
+.primary {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: var(--color-primary-light);
+}
+
+.success {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: var(--color-correct);
+}
+
+.warning {
+  background-color: rgba(234, 179, 8, 0.2);
+  color: var(--color-partial);
+}
+
+/* Clickable */
+.clickable {
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.clickable:hover {
+  border-color: var(--border-color-light);
+}
+
+.selected {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.selected:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.icon {
+  font-size: 1em;
+}
