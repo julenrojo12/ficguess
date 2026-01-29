@@ -47,8 +47,7 @@ export function Home() {
           Adivina personajes de tus universos favoritos
         </h1>
         <p className={styles.heroSubtitle}>
-          Juega al estilo Wordle con personajes de Harry Potter, Star Wars, anime
-          y mas. O crea tus propios juegos para la comunidad.
+          Juega el desafio diario de otro creadores o crea tu propio juego y compártelo con tus amigos.
         </p>
         <div className={styles.heroActions}>
           <Link to="/browse">
