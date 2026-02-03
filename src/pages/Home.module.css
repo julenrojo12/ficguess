@@ -1,32 +1,64 @@
 .page {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2xl);
+  gap: var(--spacing-3xl);
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--spacing-xl) var(--spacing-md);
 }
 
-/* Hero */
+/* === HERO SECTION === */
 .hero {
   text-align: center;
-  padding: var(--spacing-2xl) 0;
+  padding: var(--spacing-3xl) 0;
+  position: relative;
+}
+
+/* Decorative glow behind hero */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(
+    ellipse,
+    rgba(0, 240, 255, 0.15) 0%,
+    rgba(255, 0, 170, 0.05) 50%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
 }
 
 .heroTitle {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
   margin-bottom: var(--spacing-md);
-  line-height: 1.2;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 80px var(--color-primary-glow);
+  animation: heroGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.2); }
 }
 
 .heroSubtitle {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto var(--spacing-xl);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .heroActions {
@@ -36,7 +68,7 @@
   flex-wrap: wrap;
 }
 
-/* Sections */
+/* === SECTIONS === */
 .section {
   display: flex;
   flex-direction: column;
@@ -50,42 +82,70 @@
 }
 
 .sectionTitle {
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
+  letter-spacing: 0.05em;
   color: var(--text-primary);
+  position: relative;
+  padding-left: var(--spacing-md);
+}
+
+.sectionTitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 10px var(--color-primary-glow);
 }
 
 .seeAll {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-primary-light);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  transition: all var(--transition-fast);
 }
 
 .seeAll:hover {
-  text-decoration: underline;
+  text-shadow: 0 0 10px var(--color-primary-glow);
 }
 
-/* Game Grid */
+/* === GAME GRID === */
 .gameGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--spacing-lg);
 }
 
 .cardLink {
   text-decoration: none;
+  display: block;
 }
 
 .cardImage {
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background-color: var(--bg-tertiary);
+  background: var(--bg-tertiary);
+  position: relative;
 }
 
 .cardImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.cardLink:hover .cardImage img {
+  transform: scale(1.05);
 }
 
 .cardImagePlaceholder {
@@ -94,10 +154,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: var(--font-display);
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-elevated) 100%);
   color: var(--color-primary);
-  background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+  text-shadow: 0 0 20px var(--color-primary-glow);
 }
 
 .cardContent {
@@ -105,13 +167,20 @@
 }
 
 .cardTitle {
+  font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 600;
+  letter-spacing: 0.02em;
   color: var(--text-primary);
   margin-bottom: var(--spacing-xs);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: color var(--transition-fast);
+}
+
+.cardLink:hover .cardTitle {
+  color: var(--color-primary);
 }
 
 .cardUniverse {
@@ -123,14 +192,15 @@
 .cardStats {
   display: flex;
   gap: var(--spacing-md);
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--text-muted);
 }
 
-/* Empty State */
+/* === EMPTY STATE === */
 .emptyState {
   text-align: center;
-  padding: var(--spacing-2xl);
+  padding: var(--spacing-3xl);
   color: var(--text-secondary);
 }
 
@@ -138,10 +208,10 @@
   margin-bottom: var(--spacing-md);
 }
 
-/* Responsive */
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
   .heroTitle {
-    font-size: 1.75rem;
+    font-size: 2.25rem;
   }
 
   .heroSubtitle {
@@ -149,6 +219,10 @@
   }
 
   .gameGrid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+
+  .sectionTitle {
+    font-size: 1.25rem;
   }
 }

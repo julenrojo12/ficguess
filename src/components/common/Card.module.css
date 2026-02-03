@@ -1,31 +1,74 @@
 .card {
-  background-color: var(--bg-card);
+  background: var(--bg-gradient-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  position: relative;
+  transition: all var(--transition-normal);
 }
 
-/* Variants */
+/* Efecto de borde brillante sutil */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 240, 255, 0.3),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+/* === VARIANTES === */
 .default {
-  /* Default styles already applied */
+  /* Estilos base ya aplicados */
 }
 
 .interactive {
   cursor: pointer;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
 }
 
 .interactive:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--border-color-light);
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 20px var(--color-primary-glow);
+}
+
+.interactive:hover::before {
+  opacity: 1;
 }
 
 .interactive:active {
-  transform: translateY(0);
+  transform: translateY(-2px);
 }
 
-/* Padding */
+/* Variante elevada */
+.elevated {
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-md);
+}
+
+/* Variante con glow */
+.glow {
+  border-color: var(--color-primary);
+  box-shadow:
+    0 0 10px var(--color-primary-glow),
+    inset 0 0 20px rgba(0, 240, 255, 0.05);
+}
+
+.glow::before {
+  opacity: 1;
+}
+
+/* === PADDING === */
 .padding-none {
   padding: 0;
 }
@@ -40,4 +83,8 @@
 
 .padding-lg {
   padding: var(--spacing-lg);
+}
+
+.padding-xl {
+  padding: var(--spacing-xl);
 }
