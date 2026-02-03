@@ -2,61 +2,104 @@
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-xs);
+  font-family: var(--font-display);
   font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   border-radius: var(--radius-full);
   white-space: nowrap;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
 }
 
 /* Sizes */
 .sm {
   padding: 2px var(--spacing-sm);
-  font-size: 0.75rem;
+  font-size: 0.65rem;
 }
 
 .md {
-  padding: var(--spacing-xs) var(--spacing-sm);
-  font-size: 0.875rem;
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.75rem;
 }
 
 /* Variants */
 .default {
-  background-color: var(--bg-tertiary);
+  background: var(--bg-tertiary);
   color: var(--text-secondary);
+  border-color: var(--border-color);
 }
 
 .primary {
-  background-color: rgba(99, 102, 241, 0.2);
-  color: var(--color-primary-light);
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--color-primary);
+  border-color: rgba(0, 240, 255, 0.3);
 }
 
 .success {
-  background-color: rgba(34, 197, 94, 0.2);
+  background: rgba(0, 255, 136, 0.15);
   color: var(--color-correct);
+  border-color: rgba(0, 255, 136, 0.3);
 }
 
 .warning {
-  background-color: rgba(234, 179, 8, 0.2);
+  background: rgba(255, 170, 0, 0.15);
   color: var(--color-partial);
+  border-color: rgba(255, 170, 0, 0.3);
+}
+
+.danger {
+  background: rgba(255, 51, 102, 0.15);
+  color: #ff3366;
+  border-color: rgba(255, 51, 102, 0.3);
+}
+
+.accent {
+  background: rgba(255, 0, 170, 0.15);
+  color: var(--color-accent);
+  border-color: rgba(255, 0, 170, 0.3);
 }
 
 /* Clickable */
 .clickable {
   cursor: pointer;
-  border: 1px solid transparent;
-  transition: all var(--transition-fast);
 }
 
 .clickable:hover {
-  border-color: var(--border-color-light);
+  transform: translateY(-1px);
 }
 
+.default.clickable:hover {
+  border-color: var(--border-color-light);
+  background: var(--bg-elevated);
+}
+
+.primary.clickable:hover {
+  background: rgba(0, 240, 255, 0.25);
+  box-shadow: 0 0 10px var(--color-primary-glow);
+}
+
+.success.clickable:hover {
+  background: rgba(0, 255, 136, 0.25);
+  box-shadow: 0 0 10px var(--color-correct-glow);
+}
+
+.warning.clickable:hover {
+  background: rgba(255, 170, 0, 0.25);
+  box-shadow: 0 0 10px var(--color-partial-glow);
+}
+
+/* Selected state */
 .selected {
-  background-color: var(--color-primary);
-  color: white;
+  background: var(--color-primary);
+  color: var(--bg-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary-glow);
 }
 
 .selected:hover {
-  background-color: var(--color-primary-dark);
+  background: var(--color-primary-dark);
+  box-shadow: 0 0 15px var(--color-primary-glow);
 }
 
 .icon {

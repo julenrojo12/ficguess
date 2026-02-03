@@ -14,12 +14,40 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-primary);
+  background: var(--bg-gradient-main);
+  background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Efecto de partículas/estrellas en el fondo */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(0, 240, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 0, 170, 0.2), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 130px 80px, rgba(0, 240, 255, 0.2), transparent),
+    radial-gradient(1px 1px at 160px 120px, rgba(255, 208, 0, 0.3), transparent);
+  background-size: 200px 200px;
+  animation: twinkle 8s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.4; }
+  100% { opacity: 0.7; }
 }
 
 #root {
@@ -28,21 +56,34 @@ body {
   flex-direction: column;
 }
 
+/* === TIPOGRAFÍA === */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+/* === LINKS === */
 a {
-  color: var(--color-primary-light);
+  color: var(--color-primary);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: all var(--transition-fast);
+  position: relative;
 }
 
 a:hover {
-  color: var(--color-primary);
+  color: var(--color-primary-light);
+  text-shadow: var(--shadow-neon);
 }
 
+/* === BOTONES === */
 button {
   font-family: inherit;
   cursor: pointer;
 }
 
+/* === INPUTS === */
 input,
 textarea,
 select {
@@ -50,31 +91,40 @@ select {
   font-size: 1rem;
 }
 
+/* === IMÁGENES === */
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Scrollbar personalizado */
+/* === SCROLLBAR PERSONALIZADO === */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--bg-secondary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border-color-light);
   border-radius: var(--radius-full);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-primary-dark) 0%, var(--color-accent-dark) 100%);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--bg-secondary);
 }
 
-/* Utilidades */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-accent) 100%);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary-dark) var(--bg-secondary);
+}
+
+/* === UTILIDADES === */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -94,14 +144,47 @@ img {
   border: 0;
 }
 
-/* Focus visible */
+/* === FOCUS VISIBLE === */
 :focus-visible {
   outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  outline-offset: 3px;
+  box-shadow: var(--shadow-neon);
 }
 
-/* Seleccion de texto */
+/* === SELECCIÓN DE TEXTO === */
 ::selection {
-  background-color: var(--color-primary);
+  background-color: var(--color-accent);
   color: white;
+  text-shadow: none;
+}
+
+/* === EFECTOS DE TEXTO NEÓN === */
+.text-glow {
+  text-shadow:
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 40px currentColor;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === UTILIDADES DE BORDE NEÓN === */
+.border-glow {
+  border: 1px solid var(--color-primary);
+  box-shadow:
+    inset 0 0 10px rgba(0, 240, 255, 0.1),
+    0 0 10px var(--color-primary-glow);
+}
+
+/* === GLASS EFFECT === */
+.glass {
+  background: rgba(20, 20, 42, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }

@@ -1,7 +1,7 @@
 .page {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: var(--spacing-xl) var(--spacing-md);
 }
 
 .errorPage {
@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   min-height: 50vh;
-  gap: 1rem;
+  gap: var(--spacing-md);
   text-align: center;
 }
 
@@ -18,8 +18,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 2rem;
-  gap: 1rem;
+  margin-bottom: var(--spacing-xl);
+  gap: var(--spacing-md);
 }
 
 .headerInfo {
@@ -27,11 +27,15 @@
 }
 
 .backLink {
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
   text-decoration: none;
   display: inline-block;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-sm);
+  transition: color var(--transition-fast);
 }
 
 .backLink:hover {
@@ -39,65 +43,80 @@
 }
 
 .title {
+  font-family: var(--font-display);
   font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin: 0 0 0.25rem 0;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 var(--spacing-xs) 0;
 }
 
 .universe {
   font-size: 1rem;
-  color: var(--color-text-secondary);
+  color: var(--text-secondary);
   margin: 0;
 }
 
 .headerActions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--spacing-md);
 }
 
 .published {
-  padding: 0.25rem 0.75rem;
-  background: var(--color-success-bg, #dcfce7);
-  color: var(--color-success);
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 500;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: rgba(0, 255, 136, 0.15);
+  color: var(--color-correct);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .draft {
-  padding: 0.25rem 0.75rem;
-  background: var(--color-warning-bg, #fef3c7);
-  color: var(--color-warning);
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 500;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: rgba(255, 170, 0, 0.15);
+  color: var(--color-partial);
+  border: 1px solid rgba(255, 170, 0, 0.3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
 }
 
 .sectionHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-md);
 }
 
 .sectionTitle {
+  font-family: var(--font-display);
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--color-text);
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
   margin: 0;
 }
 
 .emptyText {
-  color: var(--color-text-secondary);
+  color: var(--text-secondary);
   font-size: 0.875rem;
   margin: 0;
 }
@@ -105,15 +124,15 @@
 .schemaList {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
 }
 
 .schemaItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .schemaItem:last-child {
@@ -122,27 +141,29 @@
 
 .schemaName {
   font-weight: 500;
-  color: var(--color-text);
+  color: var(--text-primary);
 }
 
 .schemaType {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  background: var(--color-bg-secondary);
-  border-radius: 4px;
-  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--color-primary);
 }
 
 .characterList {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
 }
 
 .characterItem {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--spacing-sm);
 }
 
 .characterImage {
@@ -150,55 +171,61 @@
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid var(--border-color);
 }
 
 .characterImagePlaceholder {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--color-primary);
-  color: white;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: var(--bg-primary);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: var(--font-display);
   font-size: 0.875rem;
   font-weight: 600;
 }
 
 .moreText {
-  color: var(--color-text-secondary);
+  color: var(--text-secondary);
   font-size: 0.875rem;
-  margin: 0.5rem 0 0 0;
+  margin: var(--spacing-sm) 0 0 0;
 }
 
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: var(--spacing-md);
   text-align: center;
 }
 
 .stat {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--spacing-xs);
 }
 
 .statValue {
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--color-primary);
 }
 
 .statLabel {
-  font-size: 0.75rem;
-  color: var(--color-text-secondary);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 .configList {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--spacing-sm);
 }
 
 .configItem {
@@ -208,22 +235,22 @@
 }
 
 .configItem span:first-child {
-  color: var(--color-text-secondary);
+  color: var(--text-secondary);
 }
 
 .configItem span:last-child {
-  color: var(--color-text);
+  color: var(--text-primary);
   font-weight: 500;
 }
 
 .dangerZone {
-  border: 1px solid var(--color-error);
+  border-color: #ff3366;
 }
 
 .dangerText {
-  color: var(--color-text-secondary);
+  color: var(--text-secondary);
   font-size: 0.875rem;
-  margin: 0 0 1rem 0;
+  margin: 0 0 var(--spacing-md) 0;
 }
 
 @media (max-width: 768px) {
